@@ -3,31 +3,31 @@
 
 close all; clc;
 
-% --- Resolve paths relative to this file ---------------------------------
-thisDir  = fileparts(mfilename('fullpath'));             % .../Assignment2/Matlab Code
-partsDir = fullfile(thisDir, '..', 'robot parts');       % .../Assignment2/robot parts
-figDir   = fullfile(thisDir, 'figs');                    % .../Assignment2/Matlab Code/figs
+thisDir  = fileparts(mfilename('fullpath'));             
+partsDir = fullfile(thisDir, '..', 'robot parts');       
+figDir   = fullfile(thisDir, 'figs');                    
 if ~exist(figDir,'dir'); mkdir(figDir); end
 
-% --- Import the URDF -----------------------------------------------------
+% Import the URDF
+
 urdfPath = fullfile(partsDir, 'modelrobot.urdf');
 if ~isfile(urdfPath)
     error('URDF not found at: %s', urdfPath);
 end
 dobot = importrobot(urdfPath);
 
-% --- Show the robot ------------------------------------------------------
+% Show the robot
 f = figure('Color','w');                 % open a new figure window
 show(dobot);
-title('Dobot Magician Lite');            % add a title
+title('Dobot Magician Lite');           
 xlabel('X-axis'); ylabel('Y-axis'); zlabel('Z-axis');
-view(135, 20);                           % nice 3D angle
+view(135, 20);                           
 axis equal; grid on;
 
-% --- Save image to figs/ -------------------------------------------------
+% Save image 
 outPath = fullfile(figDir, 'robot_model.png');
 exportgraphics(f, outPath, 'Resolution', 200);
 
-% --- Details in Command Window ------------------------------------------
+%  Details in Command Window 
 showdetails(dobot);
 fprintf('Saved figure to: %s\n', outPath);
