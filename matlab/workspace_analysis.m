@@ -11,8 +11,7 @@ a1 = 53.5;     % Base offset height
 a2 = 150;      % Link 1 length
 a3 = 150;      % Link 2 length
 
-%% Joint Limits (in radians)
-% Approximate limits based on Dobot Magician Lite datasheet
+%% Approximate Joint Limits (in radians)
 lim_t1 = deg2rad([-90 90]);     % Base rotation
 lim_t2 = deg2rad([-10 80]);     % Shoulder
 lim_t3 = deg2rad([-110 10]);    % Elbow
@@ -33,7 +32,7 @@ Pz = a1 - a2.*cos(t2) - a3.*cos(t3 - t2);
 
 points = [Px Py Pz];
 
-%% Compute Yoshikawa Manipulability Index (Optional)
+%% Compute Yoshikawa Manipulability Index 
 mani = zeros(N,1);
 for i = 1:N
     % Compute partial derivatives numerically for Jacobian
@@ -58,7 +57,7 @@ title('Workspace of Dobot Magician Lite')
 grid on; axis equal
 view(45,25)
 
-%% Additional Visualization (Projection views)
+%% Projection views
 figure('Color','w','Position',[950 100 700 600]);
 subplot(2,2,1)
 scatter(Px, Py, 8, 'b', 'filled'); grid on
@@ -77,4 +76,4 @@ title('Side View (YZ Plane)')
 
 sgtitle('Dobot Magician Lite Workspace Projections')
 
-disp('Workspace analysis completed successfully!')
+disp('Workspace analysis completed!')
