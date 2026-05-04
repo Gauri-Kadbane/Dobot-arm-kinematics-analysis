@@ -28,7 +28,7 @@ j4 = rigidBodyJoint("joint4","revolute"); j4.JointAxis = [1 0 0];
 setFixedTransform(j4, trvec2tform([P.L3 0 0]));
 toolRoll.Joint = j4; addBody(robot, toolRoll, "link3");
 
-% Tool/TCP offset Ltool
+% Tool offset 
 tool = rigidBody("tool");
 setFixedTransform(tool.Joint, trvec2tform([P.Ltool 0 0]));
 addBody(robot, tool, "toolRoll");
